@@ -5,7 +5,7 @@ import bge.logic as logic
 #	Se laisser guider par sa chance
 
 class Game:
-	"""A class designed to handle the comportement of the game, independently from events or graphical interface"""
+	"""A class designed to handle the behavior of the game, independently from events or graphical interface"""
 	def __init__(self, fileName):
 		print("Initialising game")
 

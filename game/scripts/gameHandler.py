@@ -12,6 +12,7 @@ class Game:
 		self.map = [[]]
 		self.loadMapFromFile(fileName)
 
+	
 
 	def loadMapFromFile(self, filePath):
 		f = open(filePath, 'r')

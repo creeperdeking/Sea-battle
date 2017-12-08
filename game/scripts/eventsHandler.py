@@ -24,13 +24,12 @@ class EventsHandler:
 		#An instance of the core game class:
 		self.game = game
 		#The orthographic scale of the camera
-		self.orthoScale = 8
+		self.orthoScale = 16
 
-		self.baseTile = self.scene.objects["tile"]
 		#The cam tracer is the object used to manipulate the position of the camera
 		self.camTracer = self.scene.objects["camTracer"]
 
-		logic.mouse.position = (0.5,0.5)
+		logic.mouse.position = (0.5, 0.5)
 
 	def update(self):
 		# Mouse events:
@@ -43,7 +42,7 @@ class EventsHandler:
 		elif mousePosX <= .1:
 			if mousePosX < 0:
 				mousePosX = 0
-			self.camT00racer.applyMovement((-.15, 0, 0), True)
+			self.camTracer.applyMovement((-.15, 0, 0), True)
 		if mousePosY <= .1:
 			if mousePosY < 0:
 				mousePosY = 0
@@ -55,5 +54,8 @@ class EventsHandler:
 
 		# Update the screen with the current position of the mouse on the board
 		tilePos = [0, 0]
-		tilePos[0] = round(self.camTracer.position[0] + mousePosX*self.orthoScale-self.orthoScale/2, 0)
-		tilePos[1] = round(self.camTracer.position[1] + ((1-mousePosY)*self.orthoScale-self.orthoScale/2)*(render.getWindowHeight() / render.getWindowWidth()), 0)
+		tilePos[0] = round(self.camTracer.position[0] + (1-mousePosX)*self.orthoScale-self.orthoScale/2, 0)
+		tilePos[1] = round(self.camTracer.position[1] + ((mousePosY)*self.orthoScale-self.orthoScale/2)*(render.getWindowHeight() / render.getWindowWidth()), 0)
+		obj = self.scene.objects["carre"]
+		#obj.position[0] = tilePos[0]-self.camTracer.position[0]
+		#obj.position[1] = tilePos[1]-self.camTracer.position[1]

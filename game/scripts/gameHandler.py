@@ -14,13 +14,16 @@ import scripts.unit as unit
 
 class Game:
 	"""A class designed to handle the behavior of the game, independently from events or graphical interface"""
-	def __init__(self, fileName):
+	def __init__(self, fileName,nbJoueur):
 		print("Initialising game")
 
 		self.map = [[]]
 		self.loadMapFromFile(fileName)
 
 		self.tour = 1
+		self.listeJoueur = [Player for i in range(nbJoueur)]
+		self.joueurActuel = 0
+		
 
 	def loadMapFromFile(self, filePath):
 		f = open(filePath, 'r')
@@ -51,11 +54,13 @@ class Game:
         def tourSuivant(self):
                 self.tour += 1
 
+        
+
 class Player:
         def __init__(self):
                 self.nom = "random"
                 self.point = 0
-                self.unite = []
+                self.unite = [] #variable qui contient la liste des bateaux du joueur
 
         def calculPoint(self):
                 self.point = 0
